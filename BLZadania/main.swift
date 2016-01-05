@@ -21,12 +21,15 @@ result.forEach({ print("\($0) \n")})
 
 print("random flashcards \n")
 var flashRandom = generateFlashcards(5)
-
+flashRandom[1].tips.append(Tip.Text(text: "text tip test"))
 flashRandom.forEach({ print("\($0) \n")})
 
 print("not learned extension \n")
 var notLearned = flashRandom.getNotLearnedYet()
 notLearned.forEach({print("\($0) \n")})
 
+
 print("debug print : ")
-debugPrint(notLearned[0].tips[0])
+if notLearned.count > 0 && notLearned[0].tips.count > 0 {
+    debugPrint(notLearned[0].tips[0])
+}

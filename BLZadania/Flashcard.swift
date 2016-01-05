@@ -35,12 +35,17 @@ class Flashcard : CustomStringConvertible, CanBeTaught {
     }
     
     func getDescription()->String {
-        var result:String = front + " -> "  + back + " ["
-        tips.forEach({ result += $0.description  + ", " })
+        var result:String = front + " -> "  + back + " [ "
         
-        result = result.stringByReplacingCharactersInRange(Range<String.Index>(start: result.endIndex.advancedBy(-2), end: result.endIndex), withString: "]")
+        for (var i = 0; i <= tips.count - 2;i++){
+            result += tips[i].description + ", "
+        }
+        let lastIndex = tips.count - 1
+        if lastIndex >= 0 {
+            result += tips[lastIndex].description
+        }
         
-        return result + ", learned : \(learned)"
+        return result + " ] learned : \(learned)"
     }
     
     
